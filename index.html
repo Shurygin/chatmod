@@ -136,7 +136,7 @@ let interv = setInterval(function () {
         var counterForDialog=0;
         var intervalForDialogWindow = setInterval(function(){
             counterForDialog++;
-            if (document.getElementsByClassName('bx-im-dialog-scroll-button-counter-digit').length > 0) {
+            if (document.getElementsByClassName('bx-livechat-wrapper').length > 0) {
                 clearInterval(intervalForDialogWindow);
                 document.getElementsByClassName('bx-livechat-wrapper')[0].parentElement.classList.add('div-with-chat-window');
                 document.getElementsByClassName('div-with-chat-window')[0].style.position = 'fixed';
