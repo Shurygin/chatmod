@@ -58,7 +58,8 @@ let interv = setInterval(function () {
                                 let inputTheme = '';
                                 if (isTA) {
                                     document.getElementsByClassName('bx-im-textarea-input')[0].setAttribute('disabled', 'disabled');
-                                    inputTheme = '<select class="ui-ctl-element bx-input-select" size="5" name="theme">' +
+                                    document.getElementsByClassName('bx-im-textarea-input')[0].setAttribute('placeholder', 'Выберите тему обращения вверху чата');
+                                    inputTheme = '<select class="ui-ctl-element bx-input-select" style="height:auto"size="5" name="theme">' +
                                         '<option disabled >Выберите тему обращения</option>' +
                                         '<option value="Внести изменения в заявку">Внести изменения в заявку</option>' +
                                         '<option value="Аннулировать заявку">Аннулировать заявку</option>' +
