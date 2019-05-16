@@ -195,13 +195,17 @@ let interv = setInterval(function () {
                 }
             } else {
                 document.getElementsByClassName('b24-widget-button-block')[0].click();
-                document.getElementsByClassName('bx-livechat-wrapper')[0].parentElement.classList.add('div-with-chat-window');
-                document.getElementsByClassName('div-with-chat-window')[0].style.position = 'fixed';
-                document.getElementsByClassName('div-with-chat-window')[0].style.top = '150px';
-                document.getElementsByClassName('div-with-chat-window')[0].style.left = '450px';
-                document.getElementsByClassName('bx-livechat-wrapper')[0].style.position = 'relative';
+                var intervalForClick =  setInterval(function(){
+                    if (document.getElementsByClassName('bx-livechat-wrapper').length>0){
+                        clearInterval(intervalForClick);
+                        document.getElementsByClassName('bx-livechat-wrapper')[0].parentElement.classList.add('div-with-chat-window');
+                        document.getElementsByClassName('div-with-chat-window')[0].style.position = 'fixed';
+                        document.getElementsByClassName('div-with-chat-window')[0].style.top = '150px';
+                        document.getElementsByClassName('div-with-chat-window')[0].style.left = '450px';
+                        document.getElementsByClassName('bx-livechat-wrapper')[0].style.position = 'relative';
+                    }                        
+                },10);                
             }
-
         });
     }
 }, 10);
