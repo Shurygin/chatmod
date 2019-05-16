@@ -1,0 +1,236 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+<title>Тест Чата</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+</head>
+<body>
+    <h1>Проверка чата</h1>
+
+    <script>
+        (function (w, d, u) {
+            var s = d.createElement('script'); s.async = true; s.src = u + '?' + (Date.now() / 60000 | 0);
+            var h = d.getElementsByTagName('script')[0]; h.parentNode.insertBefore(s, h);
+        })(window, document, 'https://bitrix.alean.ru/upload/crm/site_button/loader_1_i6vdg7.js');
+    </script>
+
+   
+        <div class="alean-bx24-chat-wrapper">
+            <!--гифка и кнопка должны быть в одном div блоке-->
+            <input type="button" value="Чат с менеджером" class="alean-bx24-chat-button" />
+            <div class="alean-bx24-chat-gif"></div>
+        </div>
+
+   
+
+
+    <script type="text/javascript">
+        //Поставить надпись мы ответим вам в ближайшее время
+        let interv = setInterval(function () {
+            if (document.getElementsByClassName('b24-widget-button-block').length > 0) {
+                clearInterval(interv);
+                document.getElementsByClassName('b24-widget-button-block')[0].addEventListener('click', function () {
+                    let intervalCount = 0;
+                    let clientName = 'Aleksey';
+                    let clientEmail = 'magnito13@yandex.ru';
+                    let clientPhone = '89002358814';
+                    let evt = document.createEvent("HTMLEvents");
+                    evt.initEvent("input", false, true);
+                    let eventListenerAdded = false;
+                    let eventListenerAddedOnSelect = false;
+                    let formSent = false;
+                    let clicked = false;
+                    if (!clicked) {
+                        clicked = true;
+                        let interval1 = setInterval(function () {
+                            if (document.getElementsByClassName('bx-im-textarea-input').length > 0) {
+                                clearInterval(interval1);
+                                if (!eventListenerAdded) {
+                                    eventListenerAdded = true;
+                                    if (document.getElementsByClassName('bx-input-select').length === 0) {
+                                        let isTA = true;
+                                        let inputTheme = '';
+                                        if (isTA) {
+                                            document.getElementsByClassName('bx-im-textarea-input')[0].setAttribute('disabled', 'disabled');
+                                            inputTheme = '<select class="ui-ctl-element bx-input-select" size="5" name="theme">' +
+                                                '<option disabled >Выберите тему обращения</option>' +
+                                                '<option value="Внести изменения в заявку">Внести изменения в заявку</option>' +
+                                                '<option value="Аннулировать заявку">Аннулировать заявку</option>' +
+                                                '<option value="Отдел оплат">Отдел оплат</option>' +
+                                                '<option value="Другое">Другое</option>' +
+                                                '</select>';
+                                        } /*else {
+                            inputTheme='<select class="ui-ctl-element bx-input-select" size="1" name="theme">' +
+                                '<option disabled selected>Выберите тему обращения</option>' +
+                                '<option value="Вопросы по продукту">Вопросы по продукту</option>' +
+                                '<option value="Бухгалтерия (документы)">Бухгалтерия (документы)</option>' +
+                                '<option value="Общие вопросы">Общие вопросы</option>' +
+                                '<option value="Рекл.туры/обучение">Рекл.туры/обучение</option>' +
+                                '</select>';
+                        }*/
+                                        if (inputTheme.length > 0) {
+                                            document.getElementsByClassName('bx-livechat-head')[0].insertAdjacentHTML('afterEnd', inputTheme);
+                                            if (!eventListenerAddedOnSelect) {
+                                                eventListenerAddedOnSelect = true;
+                                                document.getElementsByClassName('bx-input-select')[0].addEventListener('change', function () {
+                                                    document.getElementsByClassName('bx-input-select')[0].setAttribute('size', '1')
+                                                    document.getElementsByClassName('bx-im-textarea-input')[0].removeAttribute('disabled');
+                                                    let text = 'Тема обращения: ' + document.getElementsByClassName('bx-input-select')[0].value;
+                                                    document.getElementsByTagName('textarea')[0].value = text;
+                                                    document.getElementsByTagName('textarea')[0].dispatchEvent(evt);
+                                                    let interval2 = setInterval(function () {
+                                                        if (document.getElementsByClassName('bx-im-textarea-send-button').length > 0) {
+                                                            let themeSent = false;
+                                                            if (!themeSent) {
+                                                                clearInterval(interval2);
+                                                                themeSent = true;
+                                                                document.getElementsByClassName('bx-im-textarea-send-button')[0].click();
+                                                            }
+                                                        }
+                                                    }, 10);
+                                                });
+                                            }
+                                        }
+
+                                    }
+                                    document.getElementsByClassName('bx-im-textarea-input')[0].addEventListener('input', function () {
+                                        let interval = setInterval(function () {
+                                            if (document.getElementsByClassName('ui-ctl-element').length > 1) {
+                                                clearInterval(interval);
+                                                if (!formSent) {
+                                                    formSent = true;
+                                                    for (let j = 1; j < document.getElementsByClassName('ui-ctl-element').length; j++) {
+                                                        let plh = document.getElementsByClassName('ui-ctl-element')[j].placeholder;
+                                                        switch (plh) {
+                                                            case 'Имя':
+                                                                document.getElementsByClassName('ui-ctl-element')[j].value = clientName;
+                                                                break;
+                                                            case 'Электронная почта':
+                                                                document.getElementsByClassName('ui-ctl-element')[j].value = clientEmail;
+                                                                break;
+                                                            case 'Номер телефона':
+                                                                document.getElementsByClassName('ui-ctl-element')[j].value = clientPhone;
+                                                                break;
+                                                        }
+                                                        document.getElementsByClassName('ui-ctl-element')[j].dispatchEvent(evt);
+                                                    }
+                                                    document.getElementsByClassName('bx-livechat-btn-success')[0].click();
+                                                }
+                                            }
+                                            intervalCount++;
+                                            if (intervalCount > 6000) {
+                                                console.log('cleared');
+                                                clearInterval(interval);
+                                            }
+                                        }, 10);
+                                    });
+                                }
+                            }
+                        }, 10);
+                    }
+                });
+                function showUnreadMessageGif() {
+                    document.getElementsByClassName('alean-bx24-chat-gif')[0].style.display = 'block';
+                }
+
+                //кнопка
+                //var div = document.createElement("div");
+                //div.style.background = "red";
+                //div.style.fontFamily = "robotocondensed-regular, Arial, sans-serif";
+                //div.style.fontSize = "15px";
+                //div.style.lineHeight = "15px";
+                //div.style.position = "relative";
+                //div.style.textAlign = "center";
+                //div.style.cursor = "pointer";
+                //div.style.borderRadius = "4px";
+                //div.style.textTransform = "uppercase";
+                //div.style.padding = ".5em 1em";
+                //div.style.color = "white";
+                //div.style.borderBottomColor = 'grey';
+                //div.style.borderBottomStyle = 'solid';
+                //div.style.borderBottomWidth = '2px';
+                //div.innerHTML = "Связаться с куратором";
+                //div.classList.add('alean-bx24-chat-button');
+
+                //гифка
+                //var gifImage = document.createElement('div');
+                //gifImage.style.height = '32px';
+                //gifImage.style.width = '32px';
+                //gifImage.style.display = 'none';
+                //gifImage.classList.add('alean-bx24-chat-gif');
+                //gifImage.style.background = "center url(https://gitlab.com/teamfirstbit/alean/" +
+                //    "uploads/68584e5fc94c070684892dfe1d11a07e/CHAT_new_messages.gif) no-repeat";
+
+                //врапер
+                //var wrapper = document.createElement('div');
+                //div.classList.add('alean-bx24-chat-wrapper');
+                //wrapper.style.position = 'absolute';
+                //wrapper.style.top = '50px';
+                //wrapper.style.display = 'inline-flex';
+                //wrapper.appendChild(div);
+                //wrapper.appendChild(gifImage);
+
+                var wrapper = document.getElementsByClassName('alean-bx24-chat-wrapper')[0];
+
+
+                document.getElementsByTagName("body")[0].append(wrapper);
+                document.getElementsByClassName('b24-widget-button-wrapper')[0].style.display = 'none';
+                if (document.getElementsByClassName('bx-livechat-wrapper').length > 0) {
+                    document.getElementsByClassName('bx-livechat-wrapper')[0].parentElement.classList.add('div-with-chat-window');
+                    document.getElementsByClassName('div-with-chat-window')[0].style.position = 'fixed';
+                    document.getElementsByClassName('div-with-chat-window')[0].style.top = '150px';
+                    document.getElementsByClassName('div-with-chat-window')[0].style.left = '450px';
+                    document.getElementsByClassName('bx-livechat-wrapper')[0].style.position = 'relative';
+                    document.getElementsByClassName('div-with-chat-window')[0].style.display = 'none';
+                    if (parseInt(document.getElementsByClassName('bx-im-dialog-scroll-button-counter-digit')[0].textContent) > 0) {
+                        showUnreadMessageGif();
+                    }
+                }
+                function addDomeMutationListener() {
+                    var targetNode = document.getElementsByClassName('bx-im-dialog-list-box')[0];
+                    var config = { attributes: true, childList: true, subtree: true };
+                    var callback = function (mutationsList, observer) {
+                        for (var mutation of mutationsList) {
+                            if (mutation.addedNodes !== undefined) {
+                                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                                    if (mutation.addedNodes[0].classList.length === 5) {
+                                        if (document.getElementsByClassName('bx-livechat-wrapper')[0].parentElement.style.display === 'none' &&
+                                            document.getElementsByClassName('alean-bx24-chat-gif')[0].style.display === 'none'
+                                        ) {
+                                            showUnreadMessageGif();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    };
+                    observer = new MutationObserver(callback);
+                    observer.observe(targetNode, config);
+                }
+                if (document.getElementsByClassName('bx-im-textarea-input').length > 0) {
+                    addDomeMutationListener();
+                }
+                document.getElementsByClassName('alean-bx24-chat-button')[0].addEventListener('click', function () {
+                    document.getElementsByClassName('alean-bx24-chat-gif')[0].style.display = 'none';
+                    if (document.getElementsByClassName('bx-livechat-wrapper').length > 0) {
+                        if (document.getElementsByClassName('div-with-chat-window')[0].style.display === 'block') {
+                            document.getElementsByClassName('div-with-chat-window')[0].style.display = 'none';
+                            addDomeMutationListener();
+                        } else {
+                            document.getElementsByClassName('div-with-chat-window')[0].style.display = 'block';
+                        }
+                    } else {
+                        document.getElementsByClassName('b24-widget-button-block')[0].click();
+                        //document.getElementsByClassName('bx-livechat-wrapper')[0].parentElement.classList.add('div-with-chat-window');
+                        //document.getElementsByClassName('div-with-chat-window')[0].style.position = 'fixed';
+                        //document.getElementsByClassName('div-with-chat-window')[0].style.top = '150px';
+                        //document.getElementsByClassName('div-with-chat-window')[0].style.left = '450px';
+                        //document.getElementsByClassName('bx-livechat-wrapper')[0].style.position = 'relative';
+                    }
+
+                });
+            }
+        }, 10);
+    </script>
+</body>
+</html>
