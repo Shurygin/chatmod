@@ -132,47 +132,7 @@
                 function showUnreadMessageGif() {
                     document.getElementsByClassName('alean-bx24-chat-gif')[0].style.display = 'block';
                 }
-
-                //кнопка
-                //var div = document.createElement("div");
-                //div.style.background = "red";
-                //div.style.fontFamily = "robotocondensed-regular, Arial, sans-serif";
-                //div.style.fontSize = "15px";
-                //div.style.lineHeight = "15px";
-                //div.style.position = "relative";
-                //div.style.textAlign = "center";
-                //div.style.cursor = "pointer";
-                //div.style.borderRadius = "4px";
-                //div.style.textTransform = "uppercase";
-                //div.style.padding = ".5em 1em";
-                //div.style.color = "white";
-                //div.style.borderBottomColor = 'grey';
-                //div.style.borderBottomStyle = 'solid';
-                //div.style.borderBottomWidth = '2px';
-                //div.innerHTML = "Связаться с куратором";
-                //div.classList.add('alean-bx24-chat-button');
-
-                //гифка
-                //var gifImage = document.createElement('div');
-                //gifImage.style.height = '32px';
-                //gifImage.style.width = '32px';
-                //gifImage.style.display = 'none';
-                //gifImage.classList.add('alean-bx24-chat-gif');
-                //gifImage.style.background = "center url(https://gitlab.com/teamfirstbit/alean/" +
-                //    "uploads/68584e5fc94c070684892dfe1d11a07e/CHAT_new_messages.gif) no-repeat";
-
-                //врапер
-                //var wrapper = document.createElement('div');
-                //div.classList.add('alean-bx24-chat-wrapper');
-                //wrapper.style.position = 'absolute';
-                //wrapper.style.top = '50px';
-                //wrapper.style.display = 'inline-flex';
-                //wrapper.appendChild(div);
-                //wrapper.appendChild(gifImage);
-
-                var wrapper = document.getElementsByClassName('alean-bx24-chat-wrapper')[0];
-
-
+var wrapper = document.getElementsByClassName('alean-bx24-chat-wrapper')[0];
                 document.getElementsByTagName("body")[0].append(wrapper);
                 document.getElementsByClassName('b24-widget-button-wrapper')[0].style.display = 'none';
                 if (document.getElementsByClassName('bx-livechat-wrapper').length > 0) {
