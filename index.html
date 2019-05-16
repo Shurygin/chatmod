@@ -127,18 +127,20 @@ let interv = setInterval(function () {
         var wrapper = document.getElementsByClassName('alean-bx24-chat-wrapper')[0];
         document.getElementsByTagName("body")[0].append(wrapper);
         document.getElementsByClassName('b24-widget-button-wrapper')[0].style.display = 'none';
-        console.log(document.getElementsByClassName('bx-livechat-wrapper').length > 0);
-        if (document.getElementsByClassName('bx-livechat-wrapper').length > 0) {
-            document.getElementsByClassName('bx-livechat-wrapper')[0].parentElement.classList.add('div-with-chat-window');
-            document.getElementsByClassName('div-with-chat-window')[0].style.position = 'fixed';
-            document.getElementsByClassName('div-with-chat-window')[0].style.top = '150px';
-            document.getElementsByClassName('div-with-chat-window')[0].style.left = '450px';
-            document.getElementsByClassName('bx-livechat-wrapper')[0].style.position = 'relative';
-            document.getElementsByClassName('div-with-chat-window')[0].style.display = 'none';
-            if (parseInt(document.getElementsByClassName('bx-im-dialog-scroll-button-counter-digit')[0].textContent) > 0) {
-                showUnreadMessageGif();
+        setTimeout(function(){
+            if (document.getElementsByClassName('bx-livechat-wrapper').length > 0) {
+                document.getElementsByClassName('bx-livechat-wrapper')[0].parentElement.classList.add('div-with-chat-window');
+                document.getElementsByClassName('div-with-chat-window')[0].style.position = 'fixed';
+                document.getElementsByClassName('div-with-chat-window')[0].style.top = '150px';
+                document.getElementsByClassName('div-with-chat-window')[0].style.left = '450px';
+                document.getElementsByClassName('bx-livechat-wrapper')[0].style.position = 'relative';
+                document.getElementsByClassName('div-with-chat-window')[0].style.display = 'none';
+                if (parseInt(document.getElementsByClassName('bx-im-dialog-scroll-button-counter-digit')[0].textContent) > 0) {
+                    showUnreadMessageGif();
+                }
             }
-        }
+        },1000);
+        
         function addDomeMutationListener() {
             var targetNode = document.getElementsByClassName('bx-im-dialog-list-box')[0];
             var config = { attributes: true, childList: true, subtree: true };
