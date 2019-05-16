@@ -127,8 +127,11 @@ let interv = setInterval(function () {
         var wrapper = document.getElementsByClassName('alean-bx24-chat-wrapper')[0];
         document.getElementsByTagName("body")[0].append(wrapper);
         document.getElementsByClassName('b24-widget-button-wrapper')[0].style.display = 'none';
-        setTimeout(function(){
+        var counterForDialog=0;
+        var intervalForDialogWindow = setInterval(function(){
+            counterForDialog++;
             if (document.getElementsByClassName('bx-livechat-wrapper').length > 0) {
+                clearInterval(intervalForDialogWindow);
                 document.getElementsByClassName('bx-livechat-wrapper')[0].parentElement.classList.add('div-with-chat-window');
                 document.getElementsByClassName('div-with-chat-window')[0].style.position = 'fixed';
                 document.getElementsByClassName('div-with-chat-window')[0].style.top = '150px';
@@ -138,8 +141,12 @@ let interv = setInterval(function () {
                 if (parseInt(document.getElementsByClassName('bx-im-dialog-scroll-button-counter-digit')[0].textContent) > 0) {
                     showUnreadMessageGif();
                 }
+            } else if (counterForDialog>100) {
+                clearInterval(intervalForDialogWindow);
             }
-        },1000);
+        },10);
+            
+        
         
         function addDomeMutationListener() {
             var targetNode = document.getElementsByClassName('bx-im-dialog-list-box')[0];
