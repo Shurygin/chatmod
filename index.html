@@ -26,6 +26,13 @@
 
     <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function(){
+    var gifImage = document.getElementsByClassName('alean-bx24-chat-gif')[0];
+        gifImage.style.height='32px';
+        gifImage.style.width='32px';
+        gifImage.style.display='none';
+        gifImage.classList.add('alean-bx24-chat-gif');
+        gifImage.style.background="center url(https://gitlab.com/teamfirstbit/alean/" +
+            "uploads/68584e5fc94c070684892dfe1d11a07e/CHAT_new_messages.gif) no-repeat";
 let interv = setInterval(function () {
     if (document.getElementsByClassName('b24-widget-button-block').length > 0) {
         clearInterval(interv);
