@@ -144,9 +144,14 @@ let interv = setInterval(function () {
                 document.getElementsByClassName('div-with-chat-window')[0].style.left = '450px';
                 document.getElementsByClassName('bx-livechat-wrapper')[0].style.position = 'relative';
                 document.getElementsByClassName('div-with-chat-window')[0].style.display = 'none';
-                if (parseInt(document.getElementsByClassName('bx-im-dialog-scroll-button-counter-digit')[0].textContent) > 0) {
-                    showUnreadMessageGif();
-                }
+                var intervalForGif = setInterval(function(){
+                    if (document.getElementsByClassName('bx-im-dialog-scroll-button-counter-digit').length > 0) {
+                        clearInterval(intervalForGif);
+                        if (parseInt(document.getElementsByClassName('bx-im-dialog-scroll-button-counter-digit')[0].textContent) > 0) {
+                            showUnreadMessageGif();
+                        }
+                    }
+                },10);                
             } else if (counterForDialog>100) {
                 clearInterval(intervalForDialogWindow);
             }
