@@ -41,6 +41,7 @@
                     let clientEmail = 'magnito13@yandex.ru';
                     let clientPhone = '';
                     clientPhone = clientPhone.length?clientPhone.match(/[0-9]/g).join(''):clientPhone;
+                    let TANumber = '123456';
                     let evt = document.createEvent("HTMLEvents");
                     evt.initEvent("input", false, true);
                     let eventListenerAdded = false;
@@ -55,7 +56,7 @@
                                 if (!eventListenerAdded) {
                                     eventListenerAdded = true;
                                     if (document.getElementsByClassName('bx-input-select').length === 0) {
-                                        let isTA = false;
+                                        let isTA = true;
                                         let inputTheme = '';
                                         if (isTA) {
                                             document.getElementsByClassName('bx-im-textarea-input')[0].setAttribute('disabled', 'disabled');
@@ -86,9 +87,23 @@
                                                                 clearInterval(interval2);
                                                                 themeSent = true;
                                                                 document.getElementsByClassName('bx-im-textarea-send-button')[0].click();
+                                                                let textTA = 'Номер договора с ТА: ' + TANumber;
+                                                                document.getElementsByTagName('textarea')[0].value = textTA;
+                                                                document.getElementsByTagName('textarea')[0].dispatchEvent(evt);
+                                                                let interval3 = setInterval(function () {
+                                                                    if (document.getElementsByClassName('bx-im-textarea-send-button').length > 0) {
+                                                                        let TASent = false;
+                                                                        if (!TASent) {
+                                                                            clearInterval(interval3);
+                                                                            TASent = true;
+                                                                            document.getElementsByClassName('bx-im-textarea-send-button')[0].click();
+                                                                        }
+                                                                    }
+                                                                }, 10);
                                                             }
                                                         }
                                                     }, 10);
+
                                                 });
                                             }
                                         }
@@ -101,20 +116,17 @@
                                                     formSent = true;
                                                     for (let j = 1; j < document.getElementsByClassName('ui-ctl-element').length; j++) {
                                                         let plh = document.getElementsByClassName('ui-ctl-element')[j].placeholder;
-                                                        console.log(1);
                                                         switch (plh) {
                                                             case 'Имя':
                                                                 document.getElementsByClassName('ui-ctl-element')[j].value = clientName;
                                                                 break;
                                                             case 'Электронная почта':
-                                                                console.log(clientEmail.length>0);
                                                                 if (clientEmail.length>0)
                                                                 {
                                                                     document.getElementsByClassName('ui-ctl-element')[j].value = clientEmail;
                                                                 }
                                                                 break;
                                                             case 'Номер телефона':
-                                                                console.log(clientPhone.length>0);
                                                                 if (clientPhone.length>0)
                                                                 {
                                                                     document.getElementsByClassName('ui-ctl-element')[j].value = clientPhone;
@@ -123,7 +135,6 @@
                                                         }
                                                         document.getElementsByClassName('ui-ctl-element')[j].dispatchEvent(evt);
                                                     }
-                                                    console.log('success');
                                                     document.getElementsByClassName('bx-livechat-btn-success')[0].click();
                                                 }
                                             }
