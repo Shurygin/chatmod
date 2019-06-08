@@ -39,7 +39,8 @@
                     let intervalCount = 0;
                     let clientName = 'Aleksey';
                     let clientEmail = 'magnito13@yandex.ru';
-                    let clientPhone = ''.match(/[0-9]/g).join('');
+                    let clientPhone = '';
+                    clientPhone = clientPhone.length?clientPhone.match(/[0-9]/g).join(''):clientPhone;
                     let evt = document.createEvent("HTMLEvents");
                     evt.initEvent("input", false, true);
                     let eventListenerAdded = false;
