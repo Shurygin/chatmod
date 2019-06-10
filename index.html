@@ -41,7 +41,7 @@
                     let clientEmail = 'magnito13@yandex.ru';
                     let clientPhone = '';
                     clientPhone = clientPhone.length?clientPhone.match(/[0-9]/g).join(''):clientPhone;
-                    let TANumber = '123458';
+                    let TANumber = '123456';
                     let evt = document.createEvent("HTMLEvents");
                     evt.initEvent("input", false, true);
                     let eventListenerAdded = false;
@@ -87,19 +87,6 @@
                                                                 clearInterval(interval2);
                                                                 themeSent = true;
                                                                 document.getElementsByClassName('bx-im-textarea-send-button')[0].click();
-                                                                let textTA = 'Номер договора с ТА: ' + TANumber;
-                                                                document.getElementsByTagName('textarea')[0].value = textTA;
-                                                                document.getElementsByTagName('textarea')[0].dispatchEvent(evt);
-                                                                let interval3 = setInterval(function () {
-                                                                    if (document.getElementsByClassName('bx-im-textarea-send-button').length > 0) {
-                                                                        let TASent = false;
-                                                                        if (!TASent) {
-                                                                            clearInterval(interval3);
-                                                                            TASent = true;
-                                                                            document.getElementsByClassName('bx-im-textarea-send-button')[0].click();
-                                                                        }
-                                                                    }
-                                                                }, 10);
                                                             }
                                                         }
                                                     }, 10);
@@ -136,6 +123,19 @@
                                                         document.getElementsByClassName('ui-ctl-element')[j].dispatchEvent(evt);
                                                     }
                                                     document.getElementsByClassName('bx-livechat-btn-success')[0].click();
+                                                    let textTA = 'Номер договора с ТА: ' + TANumber;
+                                                    document.getElementsByTagName('textarea')[0].value = textTA;
+                                                    document.getElementsByTagName('textarea')[0].dispatchEvent(evt);
+                                                    let interval3 = setInterval(function () {
+                                                        if (document.getElementsByClassName('bx-im-textarea-send-button').length > 0) {
+                                                            let TASent = false;
+                                                            if (!TASent) {
+                                                                clearInterval(interval3);
+                                                                TASent = true;
+                                                                document.getElementsByClassName('bx-im-textarea-send-button')[0].click();
+                                                            }
+                                                        }
+                                                    }, 10);
                                                 }
                                             }
                                             intervalCount++;
